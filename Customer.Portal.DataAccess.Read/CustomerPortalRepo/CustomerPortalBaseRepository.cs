@@ -10,11 +10,18 @@ namespace Customer.Portal.DataAccess.Read.CustomerPortalRepo
 {
     public class CustomerPortalBaseRepository
     {
+        #region PRIVATE VARIABLES
         private IConnectionFactory _ConnectionFactory;
-        public  CustomerPortalBaseRepository(IConnectionFactory ConnectionFactory)
+        #endregion
+
+        #region CONSTRUCTOR
+        public CustomerPortalBaseRepository(IConnectionFactory ConnectionFactory)
         {
             _ConnectionFactory = ConnectionFactory;
         }
+        #endregion
+
+        #region PUBLIC METHODS
         public async Task<int> ExecuteAsync(string sqlString, object parameters)
         {
             return await _ConnectionFactory.Connection.ExecuteAsync(sqlString, parameters);
@@ -27,5 +34,6 @@ namespace Customer.Portal.DataAccess.Read.CustomerPortalRepo
         {
             return await _ConnectionFactory.Connection.QueryAsync<T>(sqlString, parameters);
         }
+        #endregion
     }
 }
