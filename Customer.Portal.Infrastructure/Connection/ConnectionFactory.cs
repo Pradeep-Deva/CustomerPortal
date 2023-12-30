@@ -25,7 +25,7 @@ namespace Review.History.Infrastructure.Connection
             {
                 if (_dbConnection == null || _dbConnection.State != ConnectionState.Open)
                 {
-                    _dbConnection = new SqlConnection(_connectionString.ReviewHistoryDBConnectionString);
+                    _dbConnection = new SqlConnection(_connectionString.DBConnectionString);
                 }
                 return _dbConnection;
             }

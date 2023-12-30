@@ -8,7 +8,7 @@ namespace Customer.Portal.Infrastructure.ConfigurationManager
 {
     public class ConnectionString
     {
-        public string ReviewHistoryDBConnectionString { get; set; }
+        public string DBConnectionString { get; set; }
 
     }
 }
