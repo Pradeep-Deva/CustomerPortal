@@ -89,6 +89,6 @@ namespace Customer.Portal.Api.Controllers
             result.Order = orderDetails;
             return result;
         }
+        #endregion
     }
-    #endregion
 }

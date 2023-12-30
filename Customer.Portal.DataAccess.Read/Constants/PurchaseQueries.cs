@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Customer.Portal.DataAccess.Read.Constants
 {
-    internal static class PurchanseQueries
+    internal static class PurchaseQueries
     {
         internal const string GET_CUSTOMER_DETAILS = @"
             SELECT 

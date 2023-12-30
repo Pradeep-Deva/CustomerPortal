@@ -23,17 +23,17 @@ namespace Customer.Portal.DataAccess.Read.CustomerPortalRepo
         #region PUBLIC METHODS
         public async Task<Models.CustomerDetails> GetCustomerDetails(string emailId, string customerId)
         {
-            return await SelectFirstOrDefaultAsync<Models.CustomerDetails>(PurchanseQueries.GET_CUSTOMER_DETAILS, new { EmailId = emailId, CustomerId = customerId });
+            return await SelectFirstOrDefaultAsync<Models.CustomerDetails>(PurchaseQueries.GET_CUSTOMER_DETAILS, new { EmailId = emailId, CustomerId = customerId });
         }
 
         public async Task<Models.OrderDetails> GetLastOrderBasicDetails(string customerId)
         {
-            return await SelectFirstOrDefaultAsync<Models.OrderDetails>(PurchanseQueries.GET_LASTORDER_BASIC_DETAILS, new {CustomerId = customerId });
+            return await SelectFirstOrDefaultAsync<Models.OrderDetails>(PurchaseQueries.GET_LASTORDER_BASIC_DETAILS, new {CustomerId = customerId });
         }
 
         public async Task<IEnumerable<Models.OrderItems>> GetLastOrderProductDetails(string orderId)
         {
-            return await SelectAsync<Models.OrderItems>(PurchanseQueries.GET_LASTORDER_PRODUCT_DETAILS, new { OrderId = orderId });
+            return await SelectAsync<Models.OrderItems>(PurchaseQueries.GET_LASTORDER_PRODUCT_DETAILS, new { OrderId = orderId });
         }
         #endregion
     }
