@@ -27,10 +27,10 @@ namespace Customer.Portal.Application.Services
 
         #region PUBLIC METHODS
         public async Task<CustomerOrderDetails> GetRecentOrderDetails(string userEmail, string customerId)
-        {
+        { 
             var customerDetails = await _customerPortalReadRepository.GetCustomerDetails(userEmail, customerId); //This method will get the customer details
             if (customerDetails is null)
-                throw new InvalidOperationException($"The user details not found for the given combination");  
+                throw new InvalidOperationException();  
             var lastOrderBasicDetails = await _customerPortalReadRepository.GetLastOrderBasicDetails(customerId); //This method will get the last purchase basic details
             var lastOrderProductDetails= lastOrderBasicDetails is null ? null : await _customerPortalReadRepository.GetLastOrderProductDetails(lastOrderBasicDetails.OrderNumber.ToString()); //This method will get the list of last purchase Product Item details
             return MapOrderDetails(customerDetails, lastOrderBasicDetails, lastOrderProductDetails);

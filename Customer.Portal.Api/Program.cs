@@ -1,3 +1,4 @@
+using Customer.Portal.Api.Automapper;
 using Customer.Portal.Application.Contracts;
 using Customer.Portal.Application.Services;
 using Customer.Portal.DataAccess.Read.Contracts;
@@ -19,6 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrdersProcessor, OrdersProcessor>();
 builder.Services.AddScoped<ICustomerPortalReadRepository, CustomerPortalReadRepository>();
 builder.Services.AddScoped<IConnectionFactory, ConnectionFactory>();
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 builder.Services.Configure<ConnectionString> (builder.Configuration.GetSection("ConnectionStrings"));
 
