@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Review.History.Infrastructure.Connection;
 
 var builder = WebApplication.CreateBuilder(args);
-
+builder.Services.AddAutoMapper(typeof(AutomapprConfig));
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -20,7 +20,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IOrdersProcessor, OrdersProcessor>();
 builder.Services.AddScoped<ICustomerPortalReadRepository, CustomerPortalReadRepository>();
 builder.Services.AddScoped<IConnectionFactory, ConnectionFactory>();
-builder.Services.AddAutoMapper(typeof(MappingConfig));
+
 
 builder.Services.Configure<ConnectionString> (builder.Configuration.GetSection("ConnectionStrings"));
 

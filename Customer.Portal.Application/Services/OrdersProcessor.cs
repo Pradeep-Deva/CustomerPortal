@@ -58,7 +58,7 @@ namespace Customer.Portal.Application.Services
             return newFormat;
         }
 
-        private CustomerOrderDetails MapOrderDetails(CustomerDetails customerDetails, OrderDetails lastOrderBasicDetails, IEnumerable<OrderItems> lastOrderProductDetails)
+        private CustomerOrderDetails MapOrderDetails(CustomerDetails customerDetails, OrderDetails lastOrderBasicDetails, IEnumerable<OrderItems>? lastOrderProductDetails)
         {
 
             CustomerDetails customerData = new CustomerDetails()
@@ -66,7 +66,7 @@ namespace Customer.Portal.Application.Services
                 FirstName = customerDetails.FirstName,
                 LastName = customerDetails.LastName
             };
-            OrderDetails? orderDetails = lastOrderBasicDetails is null ? null: new OrderDetails()
+            OrderDetails orderDetails = lastOrderBasicDetails is null ? null: new OrderDetails()
             {
                 OrderNumber = lastOrderBasicDetails.OrderNumber,
                 OrderDate = ConvertDatetoRequiredFormat(lastOrderBasicDetails.OrderDate),

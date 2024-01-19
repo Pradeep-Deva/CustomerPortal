@@ -38,7 +38,8 @@ namespace Customer.Portal.Api.Controllers
             try
             {
                 var recentOrderDetails = _ordersProcessor.GetRecentOrderDetails(input.User, input.CustomerId);
-                return Ok(_mapper.Map<CustomerOrderDetailsInputViewModel>(recentOrderDetails)); 
+                CustomerOrderDetails recentOrderDetailss = recentOrderDetails.Result; 
+                return Ok(_mapper.Map<CustomerRecentOrderOutputViewModel>(recentOrderDetailss));  
             }
             catch (InvalidOperationException ex)
             {
@@ -81,12 +82,12 @@ namespace Customer.Portal.Api.Controllers
                 FirstName = recentOrderDetails.Customer.FirstName,
                 LastName = recentOrderDetails.Customer.LastName
             };
-            ViewModels.OrderDetails? orderDetails = recentOrderDetails.Order is null ? null: new ViewModels.OrderDetails()
+            ViewModels.OrderDetails? orderDetails = recentOrderDetails.Order is null ? null : new ViewModels.OrderDetails()
             {
                 OrderNumber = recentOrderDetails.Order.OrderNumber,
                 OrderDate = recentOrderDetails.Order.OrderDate,
                 DeliveryAddress = recentOrderDetails.Order.DeliveryAddress,
-                OrderItems= MapOrderItems(recentOrderDetails.Order.OrderItems),
+                OrderItems = _mapper.Map<IEnumerable<ViewModels.OrderItems>> (recentOrderDetails.Order.OrderItems),
                 DeliveryExpected = recentOrderDetails.Order.DeliveryExpected
             };
 
