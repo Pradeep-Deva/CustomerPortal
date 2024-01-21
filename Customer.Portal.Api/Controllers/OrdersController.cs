@@ -3,6 +3,7 @@ using AutoMapper;
 using Customer.Portal.Api.ViewModels;
 using Customer.Portal.Application.Contracts;
 using Customer.Portal.DataAccess.Read.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
@@ -30,6 +31,7 @@ namespace Customer.Portal.Api.Controllers
         #region PUBLIC METHODS
         [HttpPost]
         [Route("GetRecentOrderDetails")]
+        [Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
