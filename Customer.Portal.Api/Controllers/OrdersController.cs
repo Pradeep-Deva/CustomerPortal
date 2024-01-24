@@ -31,7 +31,7 @@ namespace Customer.Portal.Api.Controllers
         #region PUBLIC METHODS
         [HttpPost]
         [Route("GetRecentOrderDetails")]
-        [Authorize]
+        //[Authorize]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
